@@ -1,0 +1,117 @@
+
+
+
+
+
+
+Epitech Lille                                      M. Da Costa Goncalves
+Request for Comments: 2223                                    M. Liberal
+Category: Standards Track                                   T. Mesurolle
+                                                             V. Cuvelier
+                                                                 Epitech
+                                                           November 2020
+
+                            R-Type Protocols
+
+Status of this Memo
+
+   This memo is the official specification of the R-Type Protocols. 
+   The R-Type is a third year project from EPITECH. 
+   Distribution of this memo is unlimited.
+
+Table of Contents
+
+   1.   Introduction . . . . . . . . . . . . . . . . . . . . . . . . . 1
+   2.   R-Type architecture  . . . . . . . . . . . . . . . . . . . . . 1
+   3.   R-Type UDP Protocol  . . . . . . . . . . . . . . . . . . . . . 2
+   3a.  Server requirement . . . . . . . . . . . . . . . . . . . . . . 2
+   3b.  Monster data . . . . . . . . . . . . . . . . . . . . . . . . . 2
+   4.   Client . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2       
+   
+
+1.  Introduction
+
+   The goal of the R-Type project is to recreate the R-Type game an 
+   online multiplayer game.
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119.
+
+2.  R-Type architecture
+
+   For this R-Type architecture you will find all the information 
+   concerning the player in the client while all information 
+   concerning monster are process by the server. A client connects 
+   to the server by using the UDP protocol. When one client is 
+   connected, the server start the creation of monster and 
+   communicate his position to the client. 
+
+
+
+
+
+
+
+
+
+
+Cuvelier                     Standards Track                    [Page 1]
+
+RFC 9999                    R-Type Protocols               November 2020
+
+3.  R-Type UDP Protocols 
+
+    All the client-server communication are done using UDP Protocol.
+
+    3a. Server requirement
+
+      The server MUST be launch before the clients
+    
+    3b. Monster data
+
+      All information concerning a monster REQUIRED to be comunicated 
+      using a std::array<char, 4> containing :
+
+          - in first position the type which MAY be :
+              PLANE, RAPTORPLANE or SUBMARINE
+
+	  - in second position MUST be place the first digit of the X 
+            cordinate of your monster (digit can be 0 to 7)
+
+	  - in third position MUST be place the second digit of the X 
+            cordinate of your monster (digit can be 0 to 9)
+
+  	  - in fourth position MUST be place the third digit of the X 
+            cordinate of your monster (digit can be 0 to 9)
+
+4. Client
+
+    The client will at first try to connect to the server. If it can't 
+    find a server the client will be forced to close. If the serveur 
+    respond to the client's connection then the client will wait to 
+    receive an array contening monster information
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cuvelier                    Standards Track                     [Page 2]
